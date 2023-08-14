@@ -1,14 +1,14 @@
 package sutd.compiler.regexmatch
 
 object RegExp {
-    enum RE:
+    enum RE {
         case Choice(r1:RE, r2:RE)
         case Seq(r1:RE, r2:RE)
         case Star(r:RE)
         case Epsilon
         case Letter(l:Char)
         case Phi
-    end RE
+    }
 
     import RE.* 
 
