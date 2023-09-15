@@ -52,7 +52,7 @@ The word matching problem of regular expression is to check whether the given in
 
 One way to solve the word match problem is to use Brzozoski's derivative operation.
 
-The derivative a regular expression $r$ with respect to a letter $l$ is a regular expression defined as follows
+The derivative of a regular expression $r$ with respect to a letter $l$ is a regular expression defined as follows
 
 $$
 \begin{array}{rcl}
@@ -87,7 +87,7 @@ eps(\phi) & = & false
 \end{array}
 $$
 
-We can define $match(w,r)$ in terms of $deriv(\_,\_)$. 
+We can define $match(w,r)$ in terms of $deriv(\cdot,\cdot)$. 
 
 $$
 match(w,r) = \left [
