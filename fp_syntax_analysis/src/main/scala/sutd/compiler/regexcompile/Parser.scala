@@ -55,8 +55,8 @@ object Parser {
     }
 
 
-    def parse_regex(toks:List[LToken]):Either[RE, String] = { // TODO fixme
-        Right("parser not yet implemented.")
+    def parse_regex(toks:List[LToken]):Either[String,RE] = { // TODO fixme
+        Left("parser not yet implemented.")
     }
 
 

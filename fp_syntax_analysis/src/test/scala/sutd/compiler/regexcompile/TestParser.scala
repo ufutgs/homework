@@ -24,8 +24,8 @@ class TestParser extends funsuite.AnyFunSuite {
         val expected = Star(Choice(Letter('a'),Choice(Letter('b'),Choice(Letter('c'),Choice(Letter('d'),Choice(Letter('e'),Choice(Letter('f'),Choice(Letter('g'),Choice(Letter('h'),Choice(Letter('i'),Choice(Letter('j'),Choice(Letter('k'),Choice(Letter('l'),Choice(Letter('m'),Choice(Letter('n'),Choice(Letter('o'),Choice(Letter('p'),Choice(Letter('q'),Choice(Letter('r'),Choice(Letter('s'),Choice(Letter('t'),Choice(Letter('u'),Choice(Letter('v'),Choice(Letter('w'),Choice(Letter('x'),Choice(Letter('y'),Letter('z')))))))))))))))))))))))))))
 
         parse_regex(toks) match {
-            case Right(err) => assert(false)
-            case Left(r) => assert( r == expected)
+            case Left(err) => assert(false)
+            case Right(r) => assert( r == expected)
         }
     }
     
@@ -36,8 +36,8 @@ class TestParser extends funsuite.AnyFunSuite {
 
         val expected = Seq(Choice(Letter('a'),Letter('b')),Star(Choice(Letter('A'),Letter('C')))) 
         parse_regex(toks) match {
-            case Right(err) => assert(false)
-            case Left(r) => assert( r == expected)
+            case Left(err) => assert(false)
+            case Right(r) => assert( r == expected)
         }
     }
     
