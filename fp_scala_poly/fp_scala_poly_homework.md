@@ -140,21 +140,19 @@ Out of the three functions defined for regular expression derivative matching in
 Here are some test cases you may find in the project stub.
 
 ```scala
-test("test_simp_1") {
+test("test_dr_sm_1") {
     // r = b*
     val r = Star(Letter('b'))
-    // deriv(deriv(deriv(r,b),b),b)
-    val drbbb = deriv(deriv(deriv(r,'b'),'b'), 'b')
-    assert(simp(drbbb) == Star(Letter('b')))
+    val w = "bbb".toList
+    assert(runStateMachine(r, w))
 }
 
 
-test("test_simp_2") {
-    // r = b*
-    val r = Star(Seq(Letter('b'),Letter('b')))
-    // deriv(r,b)
-    val drb = deriv(r,'b')
-    assert(simp(drb) == Seq(Letter('b'),Star(Seq(Letter('b'),Letter('b')))))
+test("test_dr_sm_2") {
+    // r = (aa)*
+    val r = Star(Seq(Letter('a'), Letter('a')))
+    val w = "aaa".toList
+    assert(!runStateMachine(r, w))
 }
 
 test("test_dr_sm_3") {
