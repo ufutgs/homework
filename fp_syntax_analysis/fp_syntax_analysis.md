@@ -17,7 +17,7 @@ The Regular Expression Syntax is defined as follows
 
 Since `|` is part of the syntax, we use `||` to represent the alternative in EBNF
 
-The set of character should includes upper case characters, however to avoid confusing with the non-terminal, we drop them for now.
+The set of characters should includes upper case characters, however to avoid confusing with the non-terminal, we drop them for now.
 
 ## Task 1
 
@@ -53,7 +53,7 @@ Given the grammar after applying left factorization, `<<grammar 2>>`
 
 Show that the resulting grammar `<<grammar 2>>` is `LL(1)`.
 
-Explain your answer in the `task3_answer.md`. 
+Explain your answer in the `task3_answer.md`.
 
 For simplicity, you may treat `C` has only one alternative i.e. `C ::= a`
 
@@ -62,6 +62,5 @@ For simplicity, you may treat `C` has only one alternative i.e. `C ::= a`
 Complete the code in `Parser.scala` to implement the top-down parser using Monadic Parser Combinator.  You must use the on-demand backtracking parsec library `Parsec.scala`.
 The lexer `Lexer.scala` included in the project stub code is a good reference, which you don't need to modify. Since the resulting grammar is in `LL(1)` there is no need to use `attempt`.
 
-After completing this task your code should be able to compile and pass the test cases in `TestParser.scala`
 
 As for practice you may want to reimplement the whole parser using the backtracking parsec library `BacktrackParsec.scala`, which will not be graded.
