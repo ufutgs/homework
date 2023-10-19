@@ -1,3 +1,10 @@
+java.nio.file.InvalidPathException: Illegal char <:> at index 3: jar:file:///C:/Users/user/AppData/Local/Coursier/cache/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10-sources.jar!/scala/Option.scala
+occurred in the presentation compiler.
+
+action parameters:
+offset: 6778
+uri: file:///C:/Users/user/Desktop/homework/fp_scala_poly/src/main/scala/sutd/compiler/regexcompile/RegExp.scala
+text:
 package sutd.compiler.regexcompile 
 
 import sutd.compiler.regexcompile.Automata.*
@@ -191,13 +198,7 @@ object RegExp {
                     acc + (s -> (acc.values.max + 1) )
                 } else { acc }
             )
-        val delta_numeric:List[(Int, Char, Int)] = delta.map((re1,char,re2)=> {
-            table.get(re1) match {
-                case Some(i1) => table.get(re2) match{
-                    case Some(i2) => (i1,char,i2)
-                }
-            }
-        })
+        val delta_numeric:List[(Int, Char, Int)] = delta.map((re1,char,re2)=> (table.get(re1) m@@,char,table.get(re2)))
         val delta_numeric_map:Map[(Int, Char), Int] = 
             delta_numeric.foldLeft(Map():Map[(Int, Char), Int])(
                 (acc, t:(Int, Char, Int)) => t match {
@@ -216,3 +217,23 @@ object RegExp {
     }
 
 }
+
+
+error stacktrace:
+java.base/sun.nio.fs.WindowsPathParser.normalize(WindowsPathParser.java:182)
+	java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:153)
+	java.base/sun.nio.fs.WindowsPathParser.parse(WindowsPathParser.java:77)
+	java.base/sun.nio.fs.WindowsPath.parse(WindowsPath.java:92)
+	java.base/sun.nio.fs.WindowsFileSystem.getPath(WindowsFileSystem.java:232)
+	java.base/java.nio.file.Path.of(Path.java:147)
+	java.base/java.nio.file.Paths.get(Paths.java:69)
+	scala.meta.io.AbsolutePath$.apply(AbsolutePath.scala:60)
+	scala.meta.internal.metals.MetalsSymbolSearch.$anonfun$definitionSourceToplevels$2(MetalsSymbolSearch.scala:62)
+	scala.Option.map(Option.scala:242)
+	scala.meta.internal.metals.MetalsSymbolSearch.definitionSourceToplevels(MetalsSymbolSearch.scala:61)
+	scala.meta.internal.pc.completions.CaseKeywordCompletion$.sortSubclasses(MatchCaseCompletions.scala:305)
+	scala.meta.internal.pc.completions.CaseKeywordCompletion$.matchContribute(MatchCaseCompletions.scala:253)
+	scala.meta.internal.pc.completions.Completions.advancedCompletions(Completions.scala:375)
+	scala.meta.internal.pc.completions.Completions.completions(Completions.scala:183)
+	scala.meta.internal.pc.completions.CompletionProvider.completions(CompletionProvider.scala:86)
+	scala.meta.internal.pc.ScalaPresentationCompiler.complete$$anonfun$1(ScalaPresentationCompiler.scala:119)
